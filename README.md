@@ -50,3 +50,9 @@ Test your new function; I've provided some basic testing code in `code.test.js`.
 What is the worst-case asymptotic time complexity of your implementation? What
 is the worst-case asymptotic memory complexity? Add your answer, including your
 reasoning, to this markdown file.
+
+### Analysis
+
+If n is the number of cities, we first get n for the first shuffle. Then n for finding the cost of the first path. Then we consider the outer loop. In the very worst case which is probably very unlikely, we generate k such that we only get 1 improvement per inner loop. And we start at the longest path and go through every combination to get to the lowest possible path. This means we go through n! combinations, and for each one we run a loop that takes n interactions. And in that loop we have to take the cost each time which takes n time. In total this comes to $n + n + n! \cdot n \cdot n = 2n + n! \cdot n^2 \in \Theta(n+n^2 n!)$ 
+
+In terms of memory complexity it will take $\Theta(n)$ memory since it only needs 2 arrays the size of n for the current path and the path we are trying next.
